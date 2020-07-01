@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: server-Service
+  labels:
+    component: server
+spec:
+  selector:
+    component: server
+  type: ClusterIP
+  ports:
+    - name: Service
+      port: 3020
+      targetPort: 3000
+      

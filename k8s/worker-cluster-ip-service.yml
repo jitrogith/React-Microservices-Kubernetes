@@ -1,16 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: fib-service-worker
+  name: worker-service
   labels:
-    app: fib-w
+    app: worker
 spec:
   selector:
-    app: fib-w
-  type: NodePort
+    app: worker
+  type: ClusterIP
   ports:
-    - name: fib-w
+    - name: worker
       port: 3060
       targetPort: 3000
-      nodePort: 31110
-
+      

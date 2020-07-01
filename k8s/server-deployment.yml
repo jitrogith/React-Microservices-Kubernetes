@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: client-deployment
+  name: server-deployment
 spec:
   selector:
     matchLabels:
-      component: web
+      component: server
   replicas: 1
   template:
     metadata:
       labels:
-        component: web
+        component: server
     spec:
       containers:
-      - name: client
-        image: rootdock/multi-client
+      - name: worker
+        image: rootdock/multi-server
         ports:
-        - containerPort: 3000
+        - containerPort: 5000
