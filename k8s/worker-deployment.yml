@@ -15,5 +15,3 @@ spec:
       containers:
       - name: client
         image: rootdock/multi-worker
-        ports:
-        - containerPort: 3000
