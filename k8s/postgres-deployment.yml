@@ -9,10 +9,17 @@ spec:
   replicas: 1
   template:
     metadata:
-      component: postgres
+      labels:
+        component: postgres
     spec:
+      volumes:
+        name: postgres-storage
+        persistentVolumeClaim:
+          claimName: database-persistent-volume-claim
       containers:
-      - name: postgres
-        image: postgres
-        ports:
-        - containerPort: 5432
+        - name: postgres
+          image: postgres
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: postgres-storage
