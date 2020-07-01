@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fib-service
+  labels:
+    app: fib
+spec:
+  selector:
+    app: fib
+  type: NodePort
+  ports:
+    - name: fib
+      port: 3050
+      targetPort: 3000
+      nodePort: 31100
