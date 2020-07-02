@@ -3,10 +3,10 @@ kind: Deployment
 metadata:
   name: postgres-deployment
 spec:
+  replicas: 1
   selector:
     matchLabels:
       component: postgres
-  replicas: 1
   template:
     metadata:
       labels:
@@ -25,3 +25,9 @@ spec:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
               subPath: postgres
+          env:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD
